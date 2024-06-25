@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <!-- Style -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <title>Sign Up #7</title>
+</head>
+
+<body>
+
+
+
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="images/8493-ai.svg" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="mb-4">
+                <!-- <h3>Servicio de transporte escolar</h3> -->
+                <p class="mb-4">Formulario de registro para diligenciar el contrato de mandato para transporte escolar
+                  servicio puerta a puerta.</p>
+              </div>
+              <form>
+                <h3 style="margin:10px 0 10px 0">Seleccione el colegio:</h3>
+                <div class="form-group first" onclick="abrirSelect('colegio')">
+                  <select class="form-control" name="colegio" id="colegio" required>
+                    <option value="" disabled selected hidden>Selecciona una opción</option>
+                    <option value="sanLuisGonzaga">SAN LUIS GONZAGA</option>
+                    <option value="comfandiMiraflores">COMFANDI MIRAFLORES</option>
+                    <option value="comfandiSanNicolas">COMFANDI SAN NICOLAS</option>
+                    <option value="colegioElBosque">COLEGIO EL BOSQUE</option>
+                    <option value="jardinInfantilNinoJesusDePraga">JARDIN INFANTIL NIÑO DE JESÚS PRAGA</option>
+                  </select>
+                </div>
+                <h3 style="margin:10px 0 10px 0">Datos responsable del contrato:</h3>
+                <div class="form-group first">
+                  <select class="form-control" name="tipo_responsable" id="tipo_responsable"
+                    onchange="cambioResponsable()" required>
+                    <option value="" disabled selected hidden>Selecciona una opción</option>
+                    <option>Padre de familia</option>
+                    <option>Madre de familia</option>
+                    <option>Acudiente</option>
+                  </select>
+                </div>
+                <div class="form-group first">
+                  <input type="text" class="form-control" placeholder="Nombres" id="nombre_responsable" name="nombre_responsable" required>
+                </div>
+                <div class="form-group first">
+                  <input type="text" class="form-control" placeholder="Apellidos" id="apellidos_responsable" name="apellidos_responsable"
+                    required>
+                </div>
+
+                <div class="form-group">
+                  <input type="number" class="form-control" placeholder="Número de cédula" id="cedula_responsable" name="cedula_responsable" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Dirección" id="direccion_responsable" name="direccion_responsable"
+                    required>
+                </div>
+                <div class="form-group">
+                  <input type="number" class="form-control" placeholder="Teléfono" id="telefono_responsable" name="telefono_responsable"
+                    required>
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" placeholder="Correo Electrónico" id="email_responsable" name="email_responsable" required>
+                </div>
+
+
+                <div class="form-group first">
+                  
+                  <select onchange="cambioRuta()" class="form-control" name="modalidad_servicio" id="modalidad_servicio"
+                    required>
+                    <option value="" disabled selected hidden>Recorrido</option>
+                    <option data-colegios="sanLuisGonzaga,comfandiMiraflores,comfandiSanNicolas,colegioElBosque">Recorrido Completo Norte</option>
+                    <option data-colegios="jardinInfantilNinoJesusDePraga">Recorrido Completo Norte 1</option>
+                    <option data-colegios="jardinInfantilNinoJesusDePraga">Recorrido Completo Norte 2</option>
+                    <option data-colegios="colegioElBosque">Recorrido Completo Norte 5PM</option>
+                    <option data-colegios="sanLuisGonzaga,comfandiMiraflores,comfandiSanNicolas">Recorrido Completo Sur</option>
+                    <option data-colegios="sanLuisGonzaga">Recorrido Completo Sur-Oriente</option>
+                    <option data-colegios="sanLuisGonzaga">Recorrido Completo Oeste</option>
+                    <option data-colegios="sanLuisGonzaga,comfandiMiraflores,comfandiSanNicolas,colegioElBosque">Recorrido Medio Norte</option>
+                    <option data-colegios="jardinInfantilNinoJesusDePraga">Recorrido Medio Norte 1</option>
+                    <option data-colegios="jardinInfantilNinoJesusDePraga">Recorrido Medio Norte 2</option>
+                    <option data-colegios="colegioElBosque">Recorrido Medio Norte 5PM</option>
+                    <option data-colegios="sanLuisGonzaga,comfandiMiraflores,comfandiSanNicolas">Recorrido Medio Sur</option>
+                    <option data-colegios="sanLuisGonzaga">Recorrido Medio Sur-Oriente</option>
+                    <option data-colegios="sanLuisGonzaga">Recorrido Medio Oeste</option>
+                    <option data-colegios="sanLuisGonzaga">Recorrido Medio Sector Ciudad Guabinas (Yumbo)</option>
+                    <option data-colegios="sanLuisGonzaga">Recorrido Completo Sector Ciudad Guabinas (Yumbo)</option>
+                  </select>
+                </div>
+
+                <div class="form-group first" id="servicio" style="display: none;">
+                  <label for="servicio_input">Servicio</label>
+                  <select onchange="servicioMedio()" class="form-control" name="servicio_input" id="servicio_input">
+                    <option></option>
+                    <option>Recoger al estudiante</option>
+                    <option>Dejar al estudiante en casa</option>
+                  </select>
+                </div>
+
+                <h3 style="margin:10px 0 10px 0">Datos del estudiante:</h3>
+
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Primer Nombre" id="primer_nombre_estudiante" name="primer_nombre_estudiante"
+                    required>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Segundo Nombre" id="segundo_nombre_estudiante"
+                    name="segundo_nombre_estudiante">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Primer Apellido" id="primer_apellido_estudiante"
+                    name="primer_apellido_estudiante" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Segundo Apellido" id="segundo_apellido_estudiante"
+                    name="segundo_apellido_estudiante">
+                </div>
+
+                <div class="form-group first">
+                  <select class="form-control" id="grado_estudiante" name="grado_estudiante" required>
+                    <option value="" disabled selected hidden>Grado</option>
+                    <option>Transición</option>
+                    <option>Jardín</option>
+                    <option>Primero</option>
+                    <option>Segundo</option>
+                    <option>Tercero</option>
+                    <option>Cuarto</option>
+                    <option>Quinto</option>
+                    <option>Sexto</option>
+                    <option>Septimo</option>
+                    <option>Octavo</option>
+                    <option>Noveno</option>
+                    <option>Decimo</option>
+                    <option>Once</option>
+                  </select>
+                </div>
+
+
+                <div id="datosParaRecoger" style="display: none;">
+                  <h3 style="margin:10px 0 10px 0">Datos para recoger el alumno:</h3>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Direccion de recogida" id="direccion_recogida" name="direccion_recogida" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Barrio" id="barrio_recogida" name="barrio_recogida" required>
+                  </div>
+                  <div class="form-group first">
+                    <select onchange="residenciaRecogida()" class="form-control" id="tipo_residencia"
+                      name="tipo_residencia" required>
+                      <option value="" disabled selected hidden>Tipo de residencia</option>
+                      <option>Apartamento</option>
+                      <option>Casa</option>
+                    </select>
+                  </div>
+                  <div class="form-group" id="input_conjunto_recogida" style="display: none;">
+                    <input type="text" class="form-control"  placeholder="Nombre del conjunto" id="nombre_conjunto_recogida"
+                      name="nombre_conjunto_recogida">
+                  </div>
+                </div>
+
+
+                <div id="datosParaDejar" style="display: none;">
+                  <h3 style="margin:10px 0 10px 0">Datos para dejar el alumno:</h3>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Dirección" id="direccion_dejada" name="direccion_dejada" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Barrio" id="barrio_dejada" name="barrio_dejada" required>
+                  </div>
+                  <div class="form-group first">
+                    <select onchange="residenciaDejada()" class="form-control" id="tipo_residencia_dejada"
+                      name="tipo_residencia_dejada" required>
+                      <option value="" disabled selected hidden>Tipo de residencia</option>
+                      <option>Apartamento</option>
+                      <option>Casa</option>
+                    </select>
+                  </div>
+                  <div class="form-group" id="input_conjunto_dejada" style="display: none;">
+                    <input type="text" class="form-control" placeholder="Nombre del conjunto" id="nombre_conjunto_dejada" name="nombre_conjunto_dejada">
+                  </div>
+                </div>
+
+
+                <div id="datos_madre" style="display: none;">
+                  <h3 style="margin:10px 0 10px 0">Datos de la Madre:</h3>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Nombre completo de la madre" id="nombre_completo_madre" name="nombre_completo_madre">
+                  </div>
+                  <div class="form-group">
+                    <input type="number" class="form-control" placeholder="Teléfono de la madre" id="telefono_madre" name="telefono_madre">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Dirección de la madre" id="direccion_madre" name="direccion_madre">
+                  </div>
+                </div>
+
+
+                <div id="datos_padre" style="display: none;">
+                  <h3 style="margin:10px 0 10px 0">Datos del Padre:</h3>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Nombre completo del padre" id="nombre_completo_padre" name="nombre_completo_padre">
+                  </div>
+                  <div class="form-group">
+                    <input type="number" class="form-control" placeholder="Teléfono del padre" id="telefono_padre" name="telefono_padre">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Dirección del padre" id="direccion_padre" name="direccion_padre">
+                  </div>
+                </div>
+
+
+
+                <h3 style="margin:10px 0 10px 0">Visualizar Contrato:</h3>
+                <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal"
+                  data-target="#verContrato">Visualizar contrato</button>
+
+
+                <h3 style="margin:10px 0 10px 0">Firma Manuscrita digital:</h3>
+                <center><canvas></canvas></center>
+                <div class="options">
+                  <button type="button" class="btn btn-outline-warning btn-sm" onclick="clearSign()">Limpiar
+                    Firma</button>
+                  <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal"
+                    data-target="#exampleModal">
+                    Como firmar ?
+                  </button>
+                </div>
+
+
+                <br>
+                <div class="d-flex mb-5 align-items-center">
+                  <label class="control control--checkbox mb-0"><span class="caption">Acepto los terminos y condiciones
+                      del servicio
+                      Terminos y condiciones, Politica de privacidad.</span>
+                    <input type="checkbox" name="terminos" required>
+                    <div class="control__indicator"></div>
+                  </label>
+                </div>
+
+                <input type="submit" value="Guardar información y firmar" class="btn btn-block btn-primary">
+
+              </form>
+
+
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Realizar firma</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      Para realizar la firma puede rotar el celular y dibujar con los dedos en el recuadro verde.
+                      <img style="width: 100%;" src="./images/signature.gif">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="modal fade" id="verContrato" tabindex="-1" role="dialog" aria-labelledby="verContrato"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="verContrato">Realizar firma</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <iframe style="border: none;" src="./images/contrato.pdf" width="100%"> </iframe>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+
+    function abrirSelect(id) {
+      const selectElement = document.getElementById(id);
+      selectElement.setAttribute("open", "true");
+    }
+
+    cambioResponsable = (event) => {
+      const tipo_responsable = document.getElementById('tipo_responsable').value;
+      const form_padre = document.getElementById('datos_padre');
+      const form_madre = document.getElementById('datos_madre');
+      form_padre.style.display = 'none';
+      form_madre.style.display = 'none';
+
+      if (tipo_responsable == 'Padre de familia') {
+        form_madre.style.display = 'block';
+      }
+      if (tipo_responsable == 'Madre de familia') {
+        form_padre.style.display = 'block';
+      }
+      if (tipo_responsable == 'Acudiente') {
+        form_padre.style.display = 'block';
+        form_madre.style.display = 'block';
+      }
+
+      console.log(tipo_responsable)
+    }
+
+
+    residenciaRecogida = () => {
+      const residencia_recogida = document.getElementById('tipo_residencia').value;
+      const input_recogida = document.getElementById('input_conjunto_recogida');
+      const nombre_conjunto_recogida = document.getElementById('nombre_conjunto_recogida');
+      input_recogida.style.display = 'none';
+      nombre_conjunto_recogida.required = false;
+      if (residencia_recogida == 'Apartamento') {
+        nombre_conjunto_recogida.required = true;
+        input_recogida.style.display = 'block';
+      }
+    }
+
+    residenciaDejada = () => {
+      const residencia_dejada = document.getElementById('tipo_residencia_dejada').value;
+      const input_dejada = document.getElementById('input_conjunto_dejada');
+      const nombre_conjunto_dejada = document.getElementById('nombre_conjunto_dejada');
+      input_dejada.style.display = 'none';
+      nombre_conjunto_dejada.required = false;
+      if (residencia_dejada == 'Apartamento') {
+        nombre_conjunto_dejada.required = true;
+        input_dejada.style.display = 'block';
+      }
+    }
+
+    cambioRuta = () => {
+      document.getElementById('colegio').addEventListener('change', function() {
+            var selectedSchool = this.value;
+            var routeSelect = document.getElementById('modalidad_servicio');
+            var options = routeSelect.options;
+            for (var i = 0; i < options.length; i++) {
+                var option = options[i];
+                if (option.value === "") {
+                    option.disabled = false; // Habilitar la opción por defecto
+                    option.selected = true; // Seleccionar la opción por defecto
+                } else {
+                    var schools = option.getAttribute('data-colegios').split(',');
+                    option.style.display = schools.includes(selectedSchool) ? '' : 'none';
+                }
+            }
+        });
+
+      const input = document.getElementById('modalidad_servicio').value;
+      const divServicio = document.getElementById('servicio')
+      const servicio_input = document.getElementById('servicio_input')
+      document.getElementById('datosParaRecoger').style.display = 'none';
+      document.getElementById('datosParaDejar').style.display = 'none';
+      if (input.includes('Medio')) {
+        document.getElementById('direccion_recogida').required = false;
+        document.getElementById('barrio_recogida').required = false;
+        document.getElementById('tipo_residencia').required = false;
+        document.getElementById('direccion_dejada').required = false;
+        document.getElementById('barrio_dejada').required = false;
+        document.getElementById('tipo_residencia_dejada').required = false;
+        divServicio.style.display = 'block';
+        servicio_input.required = true;
+      } else {
+        document.getElementById('direccion_recogida').required = true;
+        document.getElementById('barrio_recogida').required = true;
+        document.getElementById('tipo_residencia').required = true;
+        document.getElementById('direccion_dejada').required = true;
+        document.getElementById('barrio_dejada').required = true;
+        document.getElementById('tipo_residencia_dejada').required = true;
+        divServicio.style.display = 'none';
+        servicio_input.required = false;
+        document.getElementById('datosParaRecoger').style.display = 'block';
+        document.getElementById('datosParaDejar').style.display = 'block';
+
+      }
+    }
+
+    servicioMedio = () => {
+      const servicio = document.getElementById('servicio_input').value;
+      document.getElementById('datosParaRecoger').style.display = 'none';
+      document.getElementById('datosParaDejar').style.display = 'none';
+      document.getElementById('direccion_recogida').required = false;
+      document.getElementById('barrio_recogida').required = false;
+      document.getElementById('tipo_residencia').required = false;
+      document.getElementById('direccion_dejada').required = false;
+      document.getElementById('barrio_dejada').required = false;
+      document.getElementById('tipo_residencia_dejada').required = false;
+
+
+      if (servicio == 'Recoger al estudiante') {
+        document.getElementById('datosParaRecoger').style.display = 'block';
+        document.getElementById('direccion_recogida').required = true;
+        document.getElementById('barrio_recogida').required = true;
+        document.getElementById('tipo_residencia').required = true;
+      } else {
+        document.getElementById('datosParaDejar').style.display = 'block';
+        document.getElementById('direccion_dejada').required = true;
+        document.getElementById('barrio_dejada').required = true;
+        document.getElementById('tipo_residencia_dejada').required = true;
+      }
+
+    }
+
+    const canvas = document.querySelector("canvas");
+    const signaturePad = new SignaturePad(canvas, {
+      minWidth: 0.1,
+      maxWidth: 1,
+    });
+
+    function resizeCanvas() {
+      canvas.width = 300;
+      canvas.height = 200;
+      signaturePad.clear(); // otherwise isEmpty() might return incorrect value
+    }
+    //window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+    clearSign = () => {
+      this.resizeCanvas()
+    }
+    async function handleSubmit(event) {
+      event.preventDefault();
+      const tipo_responsable = document.getElementById('tipo_responsable').value;
+      const nombre_madre = document.getElementById('nombre_completo_madre').value;
+      const nombre_padre = document.getElementById('nombre_completo_padre').value;
+      let canSave = true;
+      if (tipo_responsable == 'Acudiente') {
+        if (nombre_madre || nombre_padre) {
+          canSave = true
+        } else {
+          canSave = false
+        }
+      }
+
+      if (canSave) {
+        if (!signaturePad.isEmpty()) {
+          Swal.fire({
+            title: 'Almacenando información',
+            html: 'Por favor espere.',// add html attribute if you want or remove
+            allowOutsideClick: false,
+          });
+          Swal.showLoading()
+          const data = new FormData(event.target);
+          const img_firma = signaturePad.toDataURL("image/png", 0.5);
+          data.append('sign', img_firma);
+          const value = Object.fromEntries(data.entries());
+          //http://localhost:3333/api/generate
+          //http://52.86.27.148:3333/api/generate
+          const response = await fetch("http://localhost:3333/api/generate", {
+            method: 'POST',
+            body: data
+          });
+
+          response.json().then(data => {
+            swal.close();
+            if (data.status) {
+              Swal.fire(
+                'Proceso finalizado satisfactoriamente',
+              ).then(() => {
+                location.reload()
+              });
+            }
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Para continuar debes realizar la firma manuscrita en el recuadro verde ',
+            footer: '<img style="width: 100px;" src="./images/signature.gif">'
+          })
+        }
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Para continuar debes agregar los datos del padre o de la madre en el formulario',
+          footer: ''
+        })
+      }
+
+    }
+    const form = document.querySelector('form');
+    form.addEventListener('submit', handleSubmit);
+
+
+  </script>
+</body>
+
+</html>
