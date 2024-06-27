@@ -86,7 +86,7 @@
 
                 <div class="form-group first">
                   
-                  <select onchange="cambioRuta()" class="form-control" name="modalidad_servicio" id="modalidad_servicio"
+                  <select class="form-control" name="modalidad_servicio" id="modalidad_servicio"
                     required>
                     <option value="" disabled selected hidden>Recorrido</option>
                     <option data-colegios="sanLuisGonzaga,comfandiMiraflores,comfandiSanNicolas,colegioElBosque">Recorrido Completo Norte</option>
@@ -328,6 +328,7 @@
     function abrirSelect(id) {
       const selectElement = document.getElementById(id);
       selectElement.setAttribute("open", "true");
+      cambioRuta();
     }
 
     cambioResponsable = (event) => {
