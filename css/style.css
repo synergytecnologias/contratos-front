@@ -216,14 +216,22 @@ h2 {
   background-color: #7e0cf5;
   opacity: .2; }
 
+  @media (max-width: 767.98px) {
+      canvas {
+        width: 98%;
+        margin-top: 10px;
+        border:5px solid #a8d29f;
+        background-image: "../images/bg_1.jpg";
+      }
+      
+    }
 
-  canvas {
-    width: 300px;
-    height: 200px;
-    margin-top: 10px;
-    border:5px solid #a8d29f;
-    background-image: "../images/bg_1.jpg";
-  }
+canvas {
+  width: 98%;
+  margin-top: 10px;
+  border:5px solid #a8d29f;
+  background-image: "../images/bg_1.jpg";
+}
 
 
   .options {
