@@ -86,7 +86,7 @@
 
                 <div class="form-group first">
                   
-                  <select onchange="cambioRuta()" class="form-control" name="modalidad_servicio" id="modalidad_servicio"
+                  <select onclick="cambioRuta()" class="form-control" name="modalidad_servicio" id="modalidad_servicio"
                     required>
                     <option value="" disabled selected hidden>Recorrido</option>
                     <option data-colegios="sanLuisGonzaga,comfandiMiraflores,comfandiSanNicolas,colegioElBosque">Recorrido Completo Norte</option>
@@ -109,7 +109,7 @@
                 </div>
 
                 <div class="form-group first" id="servicio" style="display: none;">
-                  <select onchange="servicioMedio()" class="form-control" name="servicio_input" id="servicio_input">
+                  <select onclick="servicioMedio()" class="form-control" name="servicio_input" id="servicio_input">
                     <option value="" disabled selected hidden>Servicio</option>
                     <option value="RecogerAlEstudiante">Recoger al estudiante</option>
                     <option value="DejarAlEstudiante">Dejar al estudiante en casa</option>
