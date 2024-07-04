@@ -40,8 +40,8 @@
               </div>
               <form>
                 <h3 style="margin:10px 0 10px 0">Seleccione el colegio:</h3>
-                <div class="form-group first" onclick="abrirSelect('colegio')">
-                  <select class="form-control" name="colegio" id="colegio" required>
+                <div class="form-group first">
+                  <select onchange="abrirSelect()" class="form-control" name="colegio" id="colegio" required>
                     <option value="" disabled selected hidden>Selecciona una opción</option>
                     <option value="sanLuisGonzaga">SAN LUIS GONZAGA</option>
                     <option value="comfandiMiraflores">COMFANDI MIRAFLORES</option>
@@ -50,6 +50,23 @@
                     <option value="jardinInfantilNinoJesusDePraga">JARDIN INFANTIL NIÑO DE JESÚS PRAGA</option>
                   </select>
                 </div>
+
+                <div class="form-group first">
+                  <select onchange="cambioRuta()" class="form-control" name="modalidad_servicio" id="modalidad_servicio"
+                    required>
+                    <option value="" disabled selected hidden>Recorrido</option>
+                  </select>
+                </div>
+
+
+                <div class="form-group first" id="servicio" style="display: none;">
+                  <select onchange="servicioMedio()" class="form-control" name="servicio_input" id="servicio_input">
+                    <option value="" disabled selected hidden>Servicio</option>
+                    <option value="RecogerAlEstudiante">Recoger al estudiante</option>
+                    <option value="DejarAlEstudiante">Dejar al estudiante en casa</option>
+                  </select>
+                </div>
+
                 <h3 style="margin:10px 0 10px 0">Datos responsable del contrato:</h3>
                 <div class="form-group first">
                   <select class="form-control" name="tipo_responsable" id="tipo_responsable"
@@ -81,39 +98,6 @@
                 </div>
                 <div class="form-group">
                   <input type="email" class="form-control" placeholder="Correo Electrónico" id="email_responsable" name="email_responsable" required>
-                </div>
-
-
-                <div class="form-group first">
-                  
-                  <select onclick="cambioRuta()" class="form-control" name="modalidad_servicio" id="modalidad_servicio"
-                    required>
-                    <option value="" disabled selected hidden>Recorrido</option>
-                    <option data-colegios="sanLuisGonzaga,comfandiMiraflores,comfandiSanNicolas,colegioElBosque">Recorrido Completo Norte</option>
-                    <option data-colegios="jardinInfantilNinoJesusDePraga">Recorrido Completo Norte 1</option>
-                    <option data-colegios="jardinInfantilNinoJesusDePraga">Recorrido Completo Norte 2</option>
-                    <option data-colegios="colegioElBosque">Recorrido Completo Norte 5PM</option>
-                    <option data-colegios="comfandiMiraflores,comfandiSanNicolas">Recorrido Completo Sur</option>
-                    <option data-colegios="sanLuisGonzaga">Recorrido Completo Sur-Oriente</option>
-                    <option data-colegios="sanLuisGonzaga">Recorrido Completo Oeste</option>
-                    <option data-colegios="sanLuisGonzaga,comfandiMiraflores,comfandiSanNicolas,colegioElBosque">Recorrido Medio Norte</option>
-                    <option data-colegios="jardinInfantilNinoJesusDePraga">Recorrido Medio Norte 1</option>
-                    <option data-colegios="jardinInfantilNinoJesusDePraga">Recorrido Medio Norte 2</option>
-                    <option data-colegios="colegioElBosque">Recorrido Medio Norte 5PM</option>
-                    <option data-colegios="comfandiMiraflores,comfandiSanNicolas">Recorrido Medio Sur</option>
-                    <option data-colegios="sanLuisGonzaga">Recorrido Medio Sur-Oriente</option>
-                    <option data-colegios="sanLuisGonzaga">Recorrido Medio Oeste</option>
-                    <option data-colegios="sanLuisGonzaga">Recorrido Medio Sector Ciudad Guabinas (Yumbo)</option>
-                    <option data-colegios="sanLuisGonzaga">Recorrido Completo Sector Ciudad Guabinas (Yumbo)</option>
-                  </select>
-                </div>
-
-                <div class="form-group first" id="servicio" style="display: none;">
-                  <select onclick="servicioMedio()" class="form-control" name="servicio_input" id="servicio_input">
-                    <option value="" disabled selected hidden>Servicio</option>
-                    <option value="RecogerAlEstudiante">Recoger al estudiante</option>
-                    <option value="DejarAlEstudiante">Dejar al estudiante en casa</option>
-                  </select>
                 </div>
 
                 <h3 style="margin:10px 0 10px 0">Datos del estudiante:</h3>
@@ -324,28 +308,36 @@
 
   <script>
 
-    function abrirSelect(id) {
-      const selectElement = document.getElementById(id);
-      selectElement.setAttribute("open", "true");
-      mostrarRecorridos();
-    }
-
-    mostrarRecorridos = () => {
-      document.getElementById('colegio').addEventListener('change', function() {
-            var selectedSchool = this.value;
-            var routeSelect = document.getElementById('modalidad_servicio');
-            var options = routeSelect.options;
-            for (var i = 0; i < options.length; i++) {
-                var option = options[i];
-                if (option.value === "") {
-                    option.disabled = false; // Habilitar la opción por defecto
-                    option.selected = true; // Seleccionar la opción por defecto
-                } else {
-                    var schools = option.getAttribute('data-colegios').split(',');
-                    option.style.display = schools.includes(selectedSchool) ? '' : 'none';
+    function abrirSelect() {
+            const selectedSchool = document.getElementById("colegio").value;
+            const list = [
+            { name: 'Recorrido Completo Norte', dataColegios: 'sanLuisGonzaga,comfandiMiraflores,comfandiSanNicolas,colegioElBosque' },
+            { name: 'Recorrido Completo Norte 1', dataColegios: 'jardinInfantilNinoJesusDePraga' },
+            { name: 'Recorrido Completo Norte 2', dataColegios: 'jardinInfantilNinoJesusDePraga' },
+            { name: 'Recorrido Completo Norte 5PM', dataColegios: 'colegioElBosque' },
+            { name: 'Recorrido Completo Sur', dataColegios: 'comfandiMiraflores,comfandiSanNicolas' },
+            { name: 'Recorrido Completo Sur-Oriente', dataColegios: 'sanLuisGonzaga' },
+            { name: 'Recorrido Completo Oeste', dataColegios: 'sanLuisGonzaga' },
+            { name: 'Recorrido Medio Norte', dataColegios: 'sanLuisGonzaga,comfandiMiraflores,comfandiSanNicolas,colegioElBosque' },
+            { name: 'Recorrido Medio Norte 1', dataColegios: 'jardinInfantilNinoJesusDePraga' },
+            { name: 'Recorrido Medio Norte 2', dataColegios: 'jardinInfantilNinoJesusDePraga' },
+            { name: 'Recorrido Medio Norte 5PM', dataColegios: 'colegioElBosque' },
+            { name: 'Recorrido Medio Sur', dataColegios: 'comfandiMiraflores,comfandiSanNicolas' },
+            { name: 'Recorrido Medio Sur-Oriente', dataColegios: 'sanLuisGonzaga' },
+            { name: 'Recorrido Medio Oeste', dataColegios: 'sanLuisGonzaga' },
+            { name: 'Recorrido Medio Sector Ciudad Guabinas (Yumbo)', dataColegios: 'sanLuisGonzaga' },
+            { name: 'Recorrido Completo Sector Ciudad Guabinas (Yumbo)', dataColegios: 'sanLuisGonzaga' }
+            ];
+            const selectElement = document.getElementById('modalidad_servicio');
+            selectElement.innerHTML = '<option value="" disabled selected hidden>Recorrido</option>';
+            list.forEach(school => {
+                if (school.dataColegios.includes(selectedSchool)) {
+                    const option = document.createElement('option');
+                    option.value = school.name;
+                    option.textContent = school.name;
+                    selectElement.appendChild(option);
                 }
-            }
-        });
+            });
     }
 
     cambioResponsable = (event) => {
